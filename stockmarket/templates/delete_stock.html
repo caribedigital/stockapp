@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %} StockMarket | About{% endblock %}
+
+{% block content %}
+
+<h1>DELETE STOCK</h1>
+<br><br>
+
+{% if ticker %}
+
+{% for item in ticker  %}
+    {{ item }} | <a href="{% url 'delete' item.id %}" class="btn-secondary">
+        Borrar {{ item }}</a><br>
+{% endfor %}
+
+{% else %}
+
+        Usted No tiene ningun Stock
+{% endif %}
+
+{% endblock %}

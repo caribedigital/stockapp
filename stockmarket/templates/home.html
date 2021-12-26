@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %} StockMarket | Home {% endblock %}
+
+{% block content %}
+ 
+<h1>Hola Mundo</h1>
+<br>
+
+
+{% if ticker %}
+
+    {{ ticker }}
+    
+{% endif %}
+    
+
+{% if clave_api %}
+    {% if clave_api == "Error..." %}
+        Hubo problema con tu Acción, por favor
+        intentalo de nuevo.
+    {% else %}
+
+        <h1>{{ clave_api.companyName }}</h1>
+        Precio: ${{ clave_api.latestPrice }} <br>
+        Cotización Anterior: {{ clave_api.previousClose }} <br>
+        Mercado: {{ clave_api.marketCap }} <br>
+        Variación: {{ clave_api.changePercent }} <br>
+        Volumen: {{ clave_api.avgTotalVolume }} <br>
+              
+    {% endif %}
+{% endif %}
+{% endblock %}
